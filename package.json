@@ -1,0 +1,33 @@
+{
+  "name": "reporter-api",
+  "version": "0.1.0",
+  "description": "A lightweight server to log services metrics",
+  "main": "api/index.js",
+  "scripts": {
+    "start": "node api/index.js",
+    "start:dev": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "daniel"
+  },
+  "keywords": [
+    "Node",
+    "Express",
+    "API",
+    "Logger",
+    "Swagger"
+  ],
+  "author": "Daniel Mejia",
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.17.1",
+    "express-swagger-generator": "1.1.17",
+    "moment": "2.27.0",
+    "swagger-jsdoc": "4.0.0",
+    "swagger-ui-express": "4.1.4"
+  },
+  "devDependencies": {
+    "nodemon": "2.0.4"
+  }
+}
