@@ -2,15 +2,14 @@
 const moment = require('moment');
 
 // Stack
-const MetricsStack = require('./metrics.stack');
-const metricsStack = MetricsStack();
+const metricsStack = require('./metrics.stack');
 
 /**
  * Check if dates have less than one hours between them.
  * @param { Date } newest The first date to compare.
  * @param { Date } oldest The second date to compare.
  */
-function isLessThanAnHour(newest, oldest) {
+exports.isLessThanAnHour = function (newest, oldest) {
   const anHourAgo = moment(newest).subtract(1, 'hours');
   return moment(oldest).isSameOrAfter(anHourAgo)
 }
@@ -22,8 +21,8 @@ function isLessThanAnHour(newest, oldest) {
  */
 exports.flushOldData = function (metricKey, date) {
   const [lastMetric] = metricsStack.values(metricKey);
-  const areOldValues = lastMetric && !isLessThanAnHour(date, lastMetric.createdAt);
- 
+  const areOldValues = lastMetric && !exports.isLessThanAnHour(date, lastMetric.createdAt);
+
   if (areOldValues) {
     metricsStack.flush(metricKey);
   }
@@ -40,7 +39,7 @@ exports.getMetrics = function (metricKey) {
 
   return metricsStack
     .values(metricKey)
-    .filter((metric) => isLessThanAnHour(now, metric.createdAt));
+    .filter((metric) => exports.isLessThanAnHour(now, metric.createdAt));
 }
 
 /**
@@ -49,7 +48,7 @@ exports.getMetrics = function (metricKey) {
  * @param { number } value The value to add.
  */
 exports.createMetric = function (metricKey, value) {
-  const metricToSave = { value: Math.round(value), createdAt: new Date() };
+  const metricToSave = { value: Math.round(value), createdAt: Date.now() };
   exports.flushOldData(metricKey, metricToSave.createdAt);
 
   metricsStack.push(metricKey, metricToSave);

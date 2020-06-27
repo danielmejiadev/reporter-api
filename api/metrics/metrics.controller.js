@@ -6,7 +6,7 @@ const metricsService = require('./metrics.service');
  * @param {*} request The http request object.
  * @param {*} response The http response object.
  */
-exports.getMetricSum = function(request, response) {
+exports.getMetricSum = function (request, response) {
   const { params } = request;
   const { metricKey } = params;
   const metricsSum = metricsService
@@ -23,7 +23,7 @@ exports.getMetricSum = function(request, response) {
  * @param {*} request The http request object.
  * @param {*} response The http response object.
  */
-exports.createMetric = function(request, response) {
+exports.createMetric = function (request, response) {
   const { body, params } = request;
   metricsService.createMetric(params.metricKey, body.value);
 

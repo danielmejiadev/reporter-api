@@ -3,7 +3,7 @@
  * Also expose the basic operations to manipulate data.
  * @returns {*} The stack operations.
  */
-module.exports = function MetricsStack() {
+function MetricsStack() {
   const store = {};
 
   function values(metricKey) {
@@ -12,7 +12,6 @@ module.exports = function MetricsStack() {
 
   function push(metricKey, metric) {
     const metricValues = values(metricKey);
-    console.log(metricValues);
     return store[metricKey] = [metric, ...metricValues];
   }
 
@@ -26,3 +25,5 @@ module.exports = function MetricsStack() {
     flush,
   }
 }
+
+module.exports = MetricsStack();

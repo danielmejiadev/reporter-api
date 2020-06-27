@@ -23,7 +23,8 @@
   ],
   "scripts": {
     "start": "node api/index.js",
-    "start:dev": "nodemon"
+    "start:dev": "nodemon",
+    "test": "jest"
   },
   "dependencies": {
     "express": "4.17.1",
@@ -33,6 +34,7 @@
     "swagger-ui-express": "4.1.4"
   },
   "devDependencies": {
+    "jest": "26.1.0",
     "nodemon": "2.0.4"
   }
 }
