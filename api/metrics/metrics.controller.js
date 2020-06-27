@@ -10,8 +10,8 @@ exports.getMetricSum = function(request, response) {
   const { params } = request;
   const { metricKey } = params;
   const metricsSum = metricsService
-    .getMetrics(metricKey);
-    //.reduce((sum, metric) => sum + metric.value, 0);
+    .getMetrics(metricKey)
+    .reduce((sum, metric) => sum + metric.value, 0);
 
   return response
     .status(200)
