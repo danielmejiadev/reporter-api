@@ -21,7 +21,7 @@ const metricController = require('./metrics.controller');
 /**
  * @swagger
  *
- * /metric/:metricKey/sum:
+ * /metric/{metricKey}/sum:
  *   get:
  *     description: Gets the sum of metrics by last hour
  *     produces:
@@ -41,7 +41,7 @@ router.get('/:metricKey/sum', metricController.getMetricSum);
 /**
  * @swagger
  *
- * /metric/:metricKey:
+ * /metric/{metricKey}:
  *   post:
  *     description: Add a new value for the given metric
  *     produces:

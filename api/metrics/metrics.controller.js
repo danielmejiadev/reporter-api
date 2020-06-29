@@ -8,9 +8,8 @@ const metricsService = require('./metrics.service');
  */
 exports.getMetricSum = function (request, response) {
   const { params } = request;
-  const { metricKey } = params;
   const metricsSum = metricsService
-    .getMetrics(metricKey)
+    .getMetrics(params.metricKey)
     .reduce((sum, metric) => sum + metric.value, 0);
 
   return response
