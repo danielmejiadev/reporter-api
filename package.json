@@ -27,7 +27,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "express": "4.17.1",
+    "express": "4.17.3",
     "express-swagger-generator": "1.1.17",
     "moment": "2.27.0",
     "swagger-jsdoc": "4.0.0",
